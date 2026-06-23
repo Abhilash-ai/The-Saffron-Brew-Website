@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Saffron Brew — A Cozy Nostalgic Cafe</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#E78A3C" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Live Status Banner -->
+    <div id="live-status-bar" class="live-status-bar">
+      <div class="status-indicator">
+        <span class="status-pulse green"></span>
+        <span id="status-text">Open Now — Brewing happiness till 10:00 PM</span>
+      </div>
+      <button id="close-banner-btn" aria-label="Close Banner">&times;</button>
+    </div>
+
+    <!-- Transparent Sticky Navbar -->
+    <header class="main-header">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <span class="logo-icon">☕</span>
+          <span class="logo-text">The Saffron Brew</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="desktop-nav">
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-link active" data-sec="home">Home</a></li>
+            <li><a href="#specials" class="nav-link" data-sec="specials">Specials</a></li>
+            <li><a href="#menu" class="nav-link" data-sec="menu">Menu</a></li>
+            <li><a href="#experience" class="nav-link" data-sec="experience">Experience</a></li>
+            <li><a href="#loyalty" class="nav-link" data-sec="loyalty">Loyalty</a></li>
+            <li><a href="#reviews" class="nav-link" data-sec="reviews">Reviews</a></li>
+            <li><a href="#about" class="nav-link" data-sec="about">About</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Navbar Actions -->
+        <div class="nav-actions">
+          <button id="cart-toggle-btn" class="nav-icon-btn" aria-label="Open Shopping Cart">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span id="cart-badge-count" class="badge">0</span>
+          </button>
+          
+          <a href="#booking" class="btn btn-primary nav-cta">Book a Table</a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Fullscreen Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+      <div class="mobile-menu-content">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#specials" class="mobile-link">Specials</a>
+        <a href="#menu" class="mobile-link">Menu</a>
+        <a href="#experience" class="mobile-link">Experience</a>
+        <a href="#loyalty" class="mobile-link">Loyalty</a>
+        <a href="#reviews" class="mobile-link">Reviews</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#booking" class="mobile-link btn btn-primary">Book a Table</a>
+      </div>
+    </div>
+
+    <!-- Mobile Native Bottom Navigation Bar -->
+    <div class="mobile-bottom-nav">
+      <a href="#home" class="bottom-nav-item active" data-sec="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Home</span>
+      </a>
+      <a href="#menu" class="bottom-nav-item" data-sec="menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Menu</span>
+      </a>
+      <a href="#booking" class="bottom-nav-item" data-sec="booking">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Book</span>
+      </a>
+      <a href="#loyalty" class="bottom-nav-item" data-sec="loyalty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>Loyalty</span>
+      </a>
+      <button id="mobile-cart-btn" class="bottom-nav-item">
+        <div class="cart-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span id="mobile-cart-badge" class="badge">0</span>
+        </div>
+        <span>Cart</span>
+      </button>
+    </div>
+
+    <!-- MAIN APP STRUCTURE -->
+    <main>
+      
+      <!-- HERO SECTION -->
+      <section id="home" class="hero-section">
+        <!-- Parallax Background Image -->
+        <div class="hero-bg" style="background-image: url('/assets/hero_cafe.png');"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Floating Coffee Particle Field -->
+        <div class="particle-field" id="hero-particles"></div>
+
+        <div class="hero-content container">
+          <div class="hero-badge reveal-item">
+            <span class="badge-dot animate-pulse"></span>
+            <span>12K+ Happy Customers</span>
+          </div>
+          
+          <h1 class="hero-title reveal-item">
+            <span class="line-1">Good Coffee.</span>
+            <span class="line-2">Great Moments.</span>
+          </h1>
+          
+          <p class="hero-subtitle reveal-item">A cozy neighborhood where every single cup whispers a nostalgic story and brings warm conversations to life.</p>
+          
+          <div class="hero-ctas reveal-item">
+            <a href="#menu" class="btn btn-primary btn-large glow-hover">Explore Menu</a>
+            <a href="#booking" class="btn btn-secondary btn-large">Book a Table</a>
+          </div>
+        </div>
+
+        <div class="scroll-indicator-container">
+          <a href="#specials" class="scroll-mouse" aria-label="Scroll Down">
+            <span class="mouse-wheel"></span>
+          </a>
+        </div>
+      </section>
+
+      <!-- DYNAMIC SPEECH MASCOT WIDGET (Saffy) -->
+      <div id="mascot-widget" class="mascot-widget">
+        <div class="mascot-bubble-wrapper">
+          <div id="mascot-speech-bubble" class="mascot-bubble">
+            <div id="mascot-text" class="mascot-text">Hello friend! Click me for delicious specials! 👋</div>
+          </div>
+        </div>
+        <div class="mascot-interactive-area" id="mascot-trigger">
+          <!-- Inline SVG Mascot "Saffy" -->
+          <svg id="mascot-svg" viewBox="0 0 100 100" class="mascot-svg">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FCD34D" />
+                <stop offset="100%" stop-color="#E78A3C" />
+              </linearGradient>
+              <linearGradient id="apronGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#8B5CF6" />
+                <stop offset="100%" stop-color="#4C1D95" />
+              </linearGradient>
+            </defs>
+            <!-- Mascot Body shadow -->
+            <ellipse cx="50" cy="94" rx="28" ry="4" fill="rgba(78, 54, 41, 0.2)" />
+            <!-- Mascot Ears -->
+            <circle cx="28" cy="30" r="11" fill="url(#bodyGrad)" />
+            <circle cx="28" cy="30" r="6" fill="#FCEFD7" />
+            <circle cx="72" cy="30" r="11" fill="url(#bodyGrad)" />
+            <circle cx="72" cy="30" r="6" fill="#FCEFD7" />
+            <!-- Mascot Body/Head (Combined blob) -->
+            <rect x="22" y="32" width="56" height="58" rx="28" fill="url(#bodyGrad)" />
+            <!-- Mascot Face Snout -->
+            <ellipse cx="50" cy="62" rx="14" ry="10" fill="#FFF" />
+            <!-- Nose -->
+            <polygon points="50,57 46,53 54,53" fill="#2F1F17" />
+            <!-- Mouth -->
+            <path d="M47,62 Q50,65 53,62" fill="none" stroke="#2F1F17" stroke-width="1.5" stroke-linecap="round" />
+            <!-- Blinking Eyes -->
+            <ellipse id="mascot-eye-left" cx="39" cy="46" rx="3.5" ry="3.5" fill="#2F1F17" />
+            <ellipse id="mascot-eye-right" cx="61" cy="46" rx="3.5" ry="3.5" fill="#2F1F17" />
+            <!-- Cheeks -->
+            <circle cx="33" cy="53" r="3" fill="#EF4444" opacity="0.6" />
+            <circle cx="67" cy="53" r="3" fill="#EF4444" opacity="0.6" />
+            <!-- Saffron Apron -->
+            <path d="M30,72 L70,72 L65,90 L35,90 Z" fill="#E28647" stroke="#FAF8F5" stroke-width="1" />
+            <rect x="42" y="77" width="16" height="10" rx="2" fill="#FAF8F5" opacity="0.8" />
+            <!-- Pouch details -->
+            <path d="M46,80 Q50,83 54,80" fill="none" stroke="#4E3629" stroke-width="1" />
+            <!-- Coffee Cup Accessory (Waving Hand holding it) -->
+            <g id="mascot-hand-left" class="mascot-hand-left">
+              <circle cx="18" cy="65" r="7" fill="url(#bodyGrad)" />
+            </g>
+            <g id="mascot-hand-right" class="mascot-hand-right">
+              <!-- Waving arm -->
+              <circle cx="82" cy="60" r="7" fill="url(#bodyGrad)" />
+              <!-- Small coffee cup in hand -->
+              <rect x="80" y="47" width="10" height="12" rx="2" fill="#F5F3FF" stroke="#4E3629" stroke-width="1" />
+              <!-- Saffron logo logo on cup -->
+              <circle cx="85" cy="53" r="2.5" fill="#E78A3C" />
+              <!-- Cup sleeve -->
+              <rect x="79" y="51" width="12" height="4" fill="#C4B5FD" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SIGNATURE SPECIALS SECTION -->
+      <section id="specials" class="specials-section section-padding">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Exquisite Delights</span>
+            <h2 class="section-title">The Signature Specials</h2>
+            <p class="section-description">Crafted with pure nostalgic memory and infused with a touch of premium saffron warmth. Hover to reveal ingredients!</p>
+          </div>
+
+          <div class="specials-grid">
+            <!-- Special Item 1 -->
+            <div class="special-card reveal-up" data-ingredients="High-grade Saffron, Organic honey, Velvet Microfoam, Espresso">
+              <div class="special-img-wrapper">
+                <img src="/assets/saffron_latte.png" alt="Signature Saffron Latte" class="special-img" loading="lazy" />
+                <div class="special-badge">Signature</div>
+              </div>
+              <div class="special-info">
+                <div class="special-meta">
+                  <span class="special-rating">⭐ 4.9 (142 reviews)</span>
+                  <span class="special-price">$6.75</span>
+                </div>
+                <h3 class="special-title">Signature Saffron Latte</h3>
+                <p class="special-desc">Our flagship golden blend of custom roasted beans, saffron threads, creamy oat milk, and organic honey.</p>
+                <div class="special-interactive-footer">
+                  <button class="btn btn-outline btn-sm quick-add-btn" data-id="saffron-latte">Add to Cart</button>
+                  <button class="favorite-heart-btn" aria-label="Favorite button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Ingredient Spotlight Overlay -->
+              <div class="ingredient-bubble">
+                <h4>Saffron Crema Details</h4>
+                <ul>
+                  <li>Double Espresso Core</li>
+                  <li>Organic Saffron Threads</li>
+                  <li>Creamy Oat Base</li>
+                  <li>Raw Orange Honey</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Special Item 2 -->
+            <div class="special-card reveal-up" data-ingredients="Caramel Drizzle, Whipped Cream, Pure Sea Salt, Vanilla Espresso">
+              <div class="special-img-wrapper">
+                <img src="/assets/caramel_latte.png" alt="Toasted Caramel Cloud" class="special-img" loading="lazy" />
+                <div class="special-badge">Popular</div>
+              </div>
+              <div class="special-info">
+                <div class="special-meta">
+                  <span class="special-rating">⭐ 4.8 (98 reviews)</span>
+                  <span class="special-price">$6.25</span>
+                </div>
+                <h3 class="special-title">Toasted Caramel Cloud</h3>
+                <p class="special-desc">Artisanal salted caramel whipped into light microfoam espresso layers. Sweet nostalgia in a cup.</p>
+                <div class="special-interactive-footer">
+                  <button class="btn btn-outline btn-sm quick-add-btn" data-id="caramel-latte">Add to Cart</button>
+                  <button class="favorite-heart-btn" aria-label="Favorite button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Ingredient Spotlight Overlay -->
+              <div class="ingredient-bubble">
+                <h4>Salted Caramel Details</h4>
+                <ul>
+                  <li>Sea Salt Crystals</li>
+                  <li>Frothed Whole Milk</li>
+                  <li>Whipped Cream Top</li>
+                  <li>Caramel Ripple Drizzle</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Special Item 3 -->
+            <div class="special-card reveal-up" data-ingredients="Fresh Strawberries, Soufflé Batter, Maple Nectar, Sweet Vanilla Cream">
+              <div class="special-img-wrapper">
+                <img src="/assets/berry_pancakes.png" alt="Soufflé Berry Pancakes" class="special-img" loading="lazy" />
+                <div class="special-badge">Nostalgic</div>
+              </div>
+              <div class="special-info">
+                <div class="special-meta">
+                  <span class="special-rating">⭐ 4.9 (215 reviews)</span>
+                  <span class="special-price">$12.50</span>
+                </div>
+                <h3 class="special-title">Soufflé Berry Pancakes</h3>
+                <p class="special-desc">Light and bouncy soufflé pancakes topped with powdered sugar, organic maple, and field berries.</p>
+                <div class="special-interactive-footer">
+                  <button class="btn btn-outline btn-sm quick-add-btn" data-id="berry-pancakes">Add to Cart</button>
+                  <button class="favorite-heart-btn" aria-label="Favorite button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Ingredient Spotlight Overlay -->
+              <div class="ingredient-bubble">
+                <h4>Pancake Details</h4>
+                <ul>
+                  <li>Japanese Soufflé Rise</li>
+                  <li>Fresh Organic Berries</li>
+                  <li>Grade A Maple Syrup</li>
+                  <li>Vanilla Cream Whip</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Special Item 4 -->
+            <div class="special-card reveal-up" data-ingredients="Belgian Fudge, Moist Cocoa Base, Glossy Ganache, Vanilla Ice Cream">
+              <div class="special-img-wrapper">
+                <img src="/assets/choco_fudge.png" alt="Nostalgic Choco Fudge Cake" class="special-img" loading="lazy" />
+                <div class="special-badge">Best Seller</div>
+              </div>
+              <div class="special-info">
+                <div class="special-meta">
+                  <span class="special-rating">⭐ 4.7 (86 reviews)</span>
+                  <span class="special-price">$8.00</span>
+                </div>
+                <h3 class="special-title">Nostalgic Choco Fudge Cake</h3>
+                <p class="special-desc">A rich chocolate sponge cake with fudge coatings. Served warm to bring back childhood memories.</p>
+                <div class="special-interactive-footer">
+                  <button class="btn btn-outline btn-sm quick-add-btn" data-id="choco-fudge">Add to Cart</button>
+                  <button class="favorite-heart-btn" aria-label="Favorite button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Ingredient Spotlight Overlay -->
+              <div class="ingredient-bubble">
+                <h4>Choco Cake Details</h4>
+                <ul>
+                  <li>70% Cocoa Ganache</li>
+                  <li>Moist Butter Crumbs</li>
+                  <li>Warm Fudge Core</li>
+                  <li>Whip cream garnish</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERACTIVE MENU SECTION -->
+      <section id="menu" class="menu-section section-padding bg-cream">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Delicious Offerings</span>
+            <h2 class="section-title">The Complete Cafe Menu</h2>
+            
+            <!-- Live Search Bar -->
+            <div class="search-wrapper">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="menu-search-input" placeholder="Search Saffron Latte, Avocado, Cardamom Bun..." />
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="menu-tabs-wrapper">
+              <div class="menu-tabs" id="menu-tabs-container">
+                <!-- Populated dynamically via main.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu Grid -->
+          <div class="menu-grid" id="menu-items-grid">
+            <!-- Populated dynamically via main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- CAFE EXPERIENCE Parallax Story Section -->
+      <section id="experience" class="experience-section section-padding">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Cozy Chapters</span>
+            <h2 class="section-title">The Saffron Experience</h2>
+            <p class="section-description">A sanctuary crafted for every chapter of your day. Watch the scenes align as you scroll.</p>
+          </div>
+
+          <div class="experience-timeline">
+            <!-- Scene 1: Morning Coffee -->
+            <div class="experience-row reveal-row">
+              <div class="experience-text">
+                <span class="scene-num">01</span>
+                <h3>Morning Coffee Ritual</h3>
+                <p>As warm golden sunbeams hit our wooden counters, our baristas pull the first rich espresso shots of the day. A perfect quiet space to align your thoughts, read the morning paper, and enjoy a fragrant cardamom roll in quiet comfort.</p>
+              </div>
+              <div class="experience-img-container">
+                <img src="/assets/gallery_barista.png" alt="Morning Barista Pour" class="experience-img" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Scene 2: Work & Study -->
+            <div class="experience-row reveal-row reverse">
+              <div class="experience-text">
+                <span class="scene-num">02</span>
+                <h3>Work & Study Sanctuary</h3>
+                <p>Equipped with high-speed fiber WiFi, cozy power sockets under every seat, and a peaceful ambiance. Our quiet workspace zones give you the concentration you need, powered by fresh citrus cold brews and saffron buns to sustain your ideas.</p>
+              </div>
+              <div class="experience-img-container">
+                <img src="/assets/hero_cafe.png" alt="Cozy Study Spot" class="experience-img" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Scene 3: Friends Gathering -->
+            <div class="experience-row reveal-row">
+              <div class="experience-text">
+                <span class="scene-num">03</span>
+                <h3>Warm Conversations</h3>
+                <p>Nostalgic board games, plush cream sofas, and shared food plates. The Saffron Brew is built to bring people together. Swap stories, enjoy hearty laughs, and share a towering plate of our Soufflé Berry Pancakes with your closest friends.</p>
+              </div>
+              <div class="experience-img-container">
+                <img src="/assets/berry_pancakes.png" alt="Friends sharing pancakes" class="experience-img" loading="lazy" />
+              </div>
+            </div>
+
+            <!-- Scene 4: Evening Relaxation -->
+            <div class="experience-row reveal-row reverse">
+              <div class="experience-text">
+                <span class="scene-num">04</span>
+                <h3>Evening Cozy Calm</h3>
+                <p>As the city lights dim, our warm lanterns turn on. Relax to the sound of soft lo-fi Japanese vinyl jazz and wind down with a comforting caffeine-free saffron herbal blend or a slice of chocolate fudge. The perfect end to a long day.</p>
+              </div>
+              <div class="experience-img-container">
+                <img src="/assets/choco_fudge.png" alt="Evening Choco Fudge" class="experience-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOYALTY CARD SECTION -->
+      <section id="loyalty" class="loyalty-section section-padding bg-cream">
+        <div class="container">
+          <div class="loyalty-box">
+            <div class="loyalty-info">
+              <span class="subheading text-white">Loyalty Perks</span>
+              <h2 class="section-title text-white">Your Saffron Brew Stamp Card</h2>
+              <p class="text-white opacity-80">We love having you around! Collect stamps with every coffee purchase. Buy 6 artisan brews and get the 7th cup completely free on us!</p>
+              <div class="loyalty-status-msg" id="loyalty-message">Add drinks to your cart to collect stamps! ☕</div>
+            </div>
+            
+            <div class="loyalty-card-wrapper reveal-right">
+              <!-- Glassmorphism Brew Card -->
+              <div class="brew-card">
+                <div class="brew-card-header">
+                  <div class="brew-card-logo">☕ The Saffron Brew</div>
+                  <div class="brew-card-chip"></div>
+                </div>
+                <div class="brew-card-title">LOYALTY REWARD CARD</div>
+                <!-- 6 Stamp Grid -->
+                <div class="stamp-grid" id="stamp-grid-container">
+                  <div class="stamp-slot" data-index="1"><span class="stamp-cup">☕</span></div>
+                  <div class="stamp-slot" data-index="2"><span class="stamp-cup">☕</span></div>
+                  <div class="stamp-slot" data-index="3"><span class="stamp-cup">☕</span></div>
+                  <div class="stamp-slot" data-index="4"><span class="stamp-cup">☕</span></div>
+                  <div class="stamp-slot" data-index="5"><span class="stamp-cup">☕</span></div>
+                  <div class="stamp-slot" data-index="6"><span class="stamp-cup">☕</span></div>
+                </div>
+                <div class="brew-card-footer">
+                  <span class="card-holder">CREMA CLUB MEMBER</span>
+                  <span id="stamp-progress-text" class="card-progress">0 of 6 STAMPS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TABLE RESERVATION WIZARD -->
+      <section id="booking" class="booking-section section-padding">
+        <div class="container">
+          <div class="booking-container">
+            <div class="booking-form-area">
+              <span class="subheading">Gather Round</span>
+              <h2 class="section-title">Book A Cozy Table</h2>
+              <p>Reserve your spot to secure your comforting study nook, garden deck, or cozy couch. Real-time slot reservation.</p>
+
+              <!-- Progress Steps -->
+              <div class="booking-steps">
+                <div class="step active" data-step="1">1. Size & Time</div>
+                <div class="step" data-step="2">2. Pick Seating</div>
+                <div class="step" data-step="3">3. Confirm Details</div>
+              </div>
+
+              <!-- Wizard Forms -->
+              <form id="reservation-wizard-form" novalidate>
+                <!-- STEP 1 CONTAINER -->
+                <div class="wizard-pane active" id="pane-step-1">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="booking-guests">Party Size</label>
+                      <select id="booking-guests" required>
+                        <option value="" disabled selected>Select Guests</option>
+                        <option value="1">1 Cozy Explorer</option>
+                        <option value="2">2 Friends / Couple</option>
+                        <option value="4">3 - 4 Family / Study Group</option>
+                        <option value="6">5 - 6 Big Feast Group</option>
+                      </select>
+                      <span class="error-msg">Please select your party size.</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="booking-date">Date Selection</label>
+                      <input type="date" id="booking-date" required />
+                      <span class="error-msg">Please select a valid future date.</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="booking-time">Time Slot</label>
+                      <select id="booking-time" required>
+                        <option value="" disabled selected>Select Time</option>
+                        <option value="08:00">08:00 AM (Sunrise Brew)</option>
+                        <option value="10:00">10:00 AM (Morning Study)</option>
+                        <option value="12:00">12:00 PM (Brunch & chat)</option>
+                        <option value="15:00">03:00 PM (Sunset Tea)</option>
+                        <option value="18:00">06:00 PM (Jazz Lounge)</option>
+                        <option value="20:00">08:00 PM (Late Night Calm)</option>
+                      </select>
+                      <span class="error-msg">Please pick an available time slot.</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary next-step-btn mt-4">Next: Seating Zone &rarr;</button>
+                </div>
+
+                <!-- STEP 2 CONTAINER -->
+                <div class="wizard-pane" id="pane-step-2">
+                  <p class="mb-4 text-center">Click a table on our interactive seating layout plan below:</p>
+                  
+                  <!-- Interactive SVG Seating Layout Plan -->
+                  <div class="seating-svg-wrapper">
+                    <svg viewBox="0 0 300 150" class="seating-svg" id="interactive-layout-svg">
+                      <rect x="0" y="0" width="300" height="150" rx="10" fill="#FAF8F5" stroke="#E78A3C" stroke-width="1.5" />
+                      
+                      <!-- Sunny Patio Zone (Greenish Brown border) -->
+                      <rect x="10" y="10" width="80" height="130" rx="6" fill="none" stroke="#A78BFA" stroke-width="1" stroke-dasharray="3" />
+                      <text x="50" y="25" text-anchor="middle" font-size="8" fill="#8B5CF6">SUNNY PATIO</text>
+                      
+                      <!-- Patio Table 1 -->
+                      <circle cx="30" cy="60" r="10" class="seating-table" data-id="P1" />
+                      <text x="30" y="62" text-anchor="middle" font-size="7" fill="#FFF">P1</text>
+                      
+                      <!-- Patio Table 2 -->
+                      <circle cx="70" cy="60" r="10" class="seating-table" data-id="P2" />
+                      <text x="70" y="62" text-anchor="middle" font-size="7" fill="#FFF">P2</text>
+                      
+                      <!-- Patio Table 3 -->
+                      <circle cx="50" cy="110" r="10" class="seating-table" data-id="P3" />
+                      <text x="50" y="112" text-anchor="middle" font-size="7" fill="#FFF">P3</text>
+
+                      <!-- Cozy Lounge (Soft Orange Border) -->
+                      <rect x="100" y="10" width="100" height="130" rx="6" fill="none" stroke="#E78A3C" stroke-width="1" stroke-dasharray="3" />
+                      <text x="150" y="25" text-anchor="middle" font-size="8" fill="#E78A3C">COZY LOUNGE</text>
+                      
+                      <!-- Lounge Table 1 (Rectangular Couch table) -->
+                      <rect x="135" y="45" width="30" height="18" rx="3" class="seating-table" data-id="L1" />
+                      <text x="150" y="56" text-anchor="middle" font-size="7" fill="#FFF">L1</text>
+                      
+                      <!-- Lounge Table 2 -->
+                      <rect x="135" y="90" width="30" height="18" rx="3" class="seating-table" data-id="L2" />
+                      <text x="150" y="101" text-anchor="middle" font-size="7" fill="#FFF">L2</text>
+
+                      <!-- Window counter Bar (Cream Accent) -->
+                      <rect x="210" y="10" width="80" height="130" rx="6" fill="none" stroke="#4E3629" stroke-width="1" stroke-dasharray="3" />
+                      <text x="250" y="25" text-anchor="middle" font-size="8" fill="#4E3629">WINDOW BAR</text>
+                      
+                      <!-- Window Table 1 -->
+                      <circle cx="235" cy="60" r="9" class="seating-table" data-id="W1" />
+                      <text x="235" y="62" text-anchor="middle" font-size="7" fill="#FFF">W1</text>
+                      
+                      <!-- Window Table 2 -->
+                      <circle cx="265" cy="60" r="9" class="seating-table" data-id="W2" />
+                      <text x="265" y="62" text-anchor="middle" font-size="7" fill="#FFF">W2</text>
+                    </svg>
+                  </div>
+                  
+                  <div class="selected-table-callout text-center mt-3" id="table-selection-callout">
+                    No Table Selected. Please click a circle/rectangle table above.
+                  </div>
+
+                  <div class="flex-buttons mt-4">
+                    <button type="button" class="btn btn-outline prev-step-btn">&larr; Back</button>
+                    <button type="button" class="btn btn-primary next-step-btn" id="next-to-details-btn" disabled>Next: Customer Details &rarr;</button>
+                  </div>
+                </div>
+
+                <!-- STEP 3 CONTAINER -->
+                <div class="wizard-pane" id="pane-step-3">
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label for="booking-name">Full Name</label>
+                      <input type="text" id="booking-name" placeholder="E.g., Haru Tanaka" required />
+                      <span class="error-msg">Please write your name.</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="booking-email">Email Address</label>
+                      <input type="email" id="booking-email" placeholder="name@domain.com" required />
+                      <span class="error-msg">Please supply a correct email.</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="booking-phone">Phone Number</label>
+                      <input type="tel" id="booking-phone" placeholder="E.g., +1 234 567 890" required />
+                      <span class="error-msg">Provide a valid contact number.</span>
+                    </div>
+                  </div>
+
+                  <div class="booking-summary-box mt-4" id="booking-final-summary">
+                    <!-- Loaded dynamically in main.js -->
+                  </div>
+
+                  <div class="flex-buttons mt-4">
+                    <button type="button" class="btn btn-outline prev-step-btn">&larr; Back</button>
+                    <button type="submit" class="btn btn-primary glow-hover" id="booking-submit-btn">
+                      Confirm Reservation <span class="spinner" id="booking-spinner"></span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+            <!-- Side Visual panel -->
+            <div class="booking-visual-area">
+              <div class="booking-quotes">
+                <h3>"A table is waiting for your nostalgic storytelling."</h3>
+                <p>Every booking includes a complimentary warm welcome saffron cookie. Cancel up to 2 hours in advance with zero fees.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CUSTOMER REVIEWS CAROUSEL -->
+      <section id="reviews" class="reviews-section section-padding bg-cream">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Kind Words</span>
+            <h2 class="section-title">Nostalgic Testimonials</h2>
+            <p class="section-description">Listen to the memories shared by members of our cozy neighborhood club.</p>
+          </div>
+
+          <!-- Carousel wrapper -->
+          <div class="carousel-container-outer">
+            <div class="carousel-nav-btn prev" id="carousel-prev" aria-label="Previous review">&larr;</div>
+            
+            <div class="reviews-carousel-track-wrapper" id="reviews-carousel-wrapper">
+              <div class="reviews-carousel-track" id="reviews-carousel-track">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                  <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="review-text">"The Saffron Latte is pure magic! It has this warm nostalgia that instantly reminds me of cozy cartoon mornings under soft blankets. The mascot Saffy is also incredibly cute."</p>
+                  <div class="review-author">
+                    <div class="author-avatar" style="background-color: #E78A3C;">HT</div>
+                    <div class="author-info">
+                      <h4>Haru Tanaka</h4>
+                      <span>Tokyo Traveler</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                  <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="review-text">"Perfect sanctuary for studying. High-speed WiFi, silent warm corners, and the smell of freshly baked cardamom buns. The interactive table booking maps out exactly where you will sit."</p>
+                  <div class="review-author">
+                    <div class="author-avatar" style="background-color: #4E3629;">SA</div>
+                    <div class="author-info">
+                      <h4>Sarah Adams</h4>
+                      <span>University Student</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                  <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="review-text">"Brought my parents here and they loved it. The soufflé berry pancakes were incredibly light, and the gold dust matcha is a work of art. The loyalty stamp card keeps us coming back!"</p>
+                  <div class="review-author">
+                    <div class="author-avatar" style="background-color: #C97A52;">DK</div>
+                    <div class="author-info">
+                      <h4>David Kim</h4>
+                      <span>Local Resident</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="review-card">
+                  <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="review-text">"A rare gem that successfully blends luxury design with warm cartoon playfulness. Everything feels responsive, clean, and highly welcoming. Ten stars!"</p>
+                  <div class="review-author">
+                    <div class="author-avatar" style="background-color: #8B5CF6;">ML</div>
+                    <div class="author-info">
+                      <h4>Maya Lin</h4>
+                      <span>UX Designer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-nav-btn next" id="carousel-next" aria-label="Next review">&rarr;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT COZY STORY SECTION -->
+      <section id="about" class="about-section section-padding">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-img-area">
+              <div class="main-about-img">
+                <img src="/assets/hero_cafe.png" alt="Our Warm Interior" loading="lazy" />
+              </div>
+              <div class="sub-about-img reveal-left">
+                <img src="/assets/gallery_barista.png" alt="Barista Art" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="about-text-area">
+              <span class="subheading">Our Origin Story</span>
+              <h2 class="section-title">A Story Born of Warm Nostalgia</h2>
+              <p class="lead">Inspired by memories of neighborhood cafes in Kyoto and the comforting warmth of childhood morning cartoons.</p>
+              <p>The Saffron Brew was founded in 2024 to provide an urban refuge from the fast-paced world. We believe coffee is more than just caffeine; it is a catalyst for slow mornings, warm conversations, and creative ideas.</p>
+              <p>We source single-origin organic coffee beans and blend them with rare saffron spices to create our signature cremas. Combined with an interactive setting, we welcome you to sit back, talk slow, and explore our world.</p>
+              
+              <div class="about-features">
+                <div class="about-feat-item">
+                  <span class="feat-icon">🌾</span>
+                  <div>
+                    <h4>100% Organic Saffron</h4>
+                    <p>Ethically imported and hand-sorted.</p>
+                  </div>
+                </div>
+                <div class="about-feat-item">
+                  <span class="feat-icon">🎷</span>
+                  <div>
+                    <h4>Japanese Jazz Vinyls</h4>
+                    <p>Played daily for calming background ambient vibes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY MASONRY LIGHTBOX -->
+      <section class="gallery-section section-padding bg-cream">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Captured Moments</span>
+            <h2 class="section-title">Scenes from Saffron</h2>
+            <p class="section-description">Click an image to expand and explore the visual corners of our cozy house.</p>
+          </div>
+
+          <div class="gallery-masonry" id="gallery-masonry-container">
+            <!-- Gallery Item 1 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/hero_cafe.png" alt="Cozy Saffron Coffee Spot" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+            
+            <!-- Gallery Item 2 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/saffron_latte.png" alt="Freshly Brewed Saffron Latte" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/berry_pancakes.png" alt="Fluffy Soufflé Pancake Stack" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+
+            <!-- Gallery Item 4 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/gallery_barista.png" alt="Artisan Barista Pouring Coffee" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+
+            <!-- Gallery Item 5 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/caramel_latte.png" alt="Toasted Salted Caramel Latte" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="gallery-item-wrapper card-zoom">
+              <img src="/assets/choco_fudge.png" alt="Chocolate Fudge Sponge Cake" class="gallery-img" loading="lazy" />
+              <div class="gallery-hover-overlay">
+                <span>View Details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ ACCORDION -->
+      <section class="faq-section section-padding">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="subheading">Got Questions?</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+          </div>
+
+          <div class="faq-accordion-wrapper">
+            <!-- Accordion 1 -->
+            <div class="faq-item">
+              <button class="faq-trigger">
+                <span>What are your opening hours?</span>
+                <span class="faq-arrow">&darr;</span>
+              </button>
+              <div class="faq-content">
+                <p>We are open daily from 08:00 AM to 10:00 PM. Our kitchen stops taking hot food orders at 09:30 PM, but coffee and pastries remain available until close.</p>
+              </div>
+            </div>
+
+            <!-- Accordion 2 -->
+            <div class="faq-item">
+              <button class="faq-trigger">
+                <span>Do you have fast WiFi and plugs for laptops?</span>
+                <span class="faq-arrow">&darr;</span>
+              </button>
+              <div class="faq-content">
+                <p>Yes, we have ultra-fast fiber WiFi (300 Mbps) open to all guests. We also have dual power sockets fitted underneath every wooden bench and counter seat in our study zones.</p>
+              </div>
+            </div>
+
+            <!-- Accordion 3 -->
+            <div class="faq-item">
+              <button class="faq-trigger">
+                <span>Is there car parking available at the cafe?</span>
+                <span class="faq-arrow">&darr;</span>
+              </button>
+              <div class="faq-content">
+                <p>Yes, we have 12 dedicated customer parking spots directly behind the cafe building. There is also plenty of free street parking available along the adjacent residential park sides.</p>
+              </div>
+            </div>
+
+            <!-- Accordion 4 -->
+            <div class="faq-item">
+              <button class="faq-trigger">
+                <span>How does your online Table Reservation work?</span>
+                <span class="faq-arrow">&darr;</span>
+              </button>
+              <div class="faq-content">
+                <p>You can use our step-by-step reservation wizard above to select your guest size, date, time slot, and click your preferred seating layout spot. Canceling is completely free up to 2 hours before your slot.</p>
+              </div>
+            </div>
+
+            <!-- Accordion 5 -->
+            <div class="faq-item">
+              <button class="faq-trigger">
+                <span>What are your most popular signature items?</span>
+                <span class="faq-arrow">&darr;</span>
+              </button>
+              <div class="faq-content">
+                <p>Our top-selling item is the Signature Saffron Latte, followed closely by the Swedish-inspired Cardamom Saffron Bun and our fluffy Japanese Soufflé Berry Pancakes. Ask Saffy our mascot for custom recommendations!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT & DYNAMIC MAP -->
+      <section class="contact-section section-padding bg-cream">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-info-card">
+              <span class="subheading">Get In Touch</span>
+              <h2 class="section-title">Drop by for coffee!</h2>
+              <p class="mb-5">We are nestled in a peaceful neighborhood corner, directly overlooking the cherry blossom park.</p>
+              
+              <div class="contact-methods">
+                <a href="https://maps.google.com" target="_blank" rel="noopener" class="contact-item">
+                  <span class="contact-icon">📍</span>
+                  <div>
+                    <h4>Our Location</h4>
+                    <p>42 Saffron Lane, Cherry Blossom Ward, Tokyo</p>
+                  </div>
+                </a>
+
+                <a href="tel:+81312345678" class="contact-item">
+                  <span class="contact-icon">📞</span>
+                  <div>
+                    <h4>Phone Number</h4>
+                    <p>+81 (3) 1234 5678</p>
+                  </div>
+                </a>
+
+                <a href="mailto:hello@saffronbrew.com" class="contact-item">
+                  <span class="contact-icon">✉️</span>
+                  <div>
+                    <h4>Email Address</h4>
+                    <p>hello@saffronbrew.com</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Vector Map Placeholder -->
+            <div class="map-container">
+              <div class="map-placeholder">
+                <div class="map-graphic">
+                  <!-- Custom Styled Vector Map Elements -->
+                  <div class="map-road vertical"></div>
+                  <div class="map-road horizontal"></div>
+                  <div class="map-park"><span>Cherry Blossom Park 🌸</span></div>
+                  <div class="map-building cafe-spot animate-bounce">
+                    <span class="building-icon">☕</span>
+                    <span class="building-label">THE SAFFRON BREW</span>
+                  </div>
+                  <div class="map-building train-station"><span>Haru Station 🚉</span></div>
+                </div>
+                <div class="map-overlay">
+                  <a href="https://maps.google.com" target="_blank" class="btn btn-primary btn-sm">Open in Google Maps</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="logo mb-4">
+              <span class="logo-icon">☕</span>
+              <span class="logo-text">The Saffron Brew</span>
+            </a>
+            <p class="mb-4">Where childhood memories meet organic single-origin roasted beans and saffron warmth.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+              <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+              <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#specials">Specials</a></li>
+              <li><a href="#menu">Complete Menu</a></li>
+              <li><a href="#booking">Table Booking</a></li>
+              <li><a href="#loyalty">Loyalty Cards</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-hours">
+            <h4>Opening Hours</h4>
+            <p><strong>Monday - Friday:</strong> 08:00 AM - 10:00 PM</p>
+            <p><strong>Saturday - Sunday:</strong> 07:30 AM - 10:30 PM</p>
+            <p class="text-saffron font-bold">Lofi Jazz Night: Friday from 07:00 PM</p>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Join The Saffron Club</h4>
+            <p>Sign up to receive sweet coupon codes, recipes, and event details!</p>
+            <form id="newsletter-form" class="newsletter-form" novalidate>
+              <input type="email" id="newsletter-email" placeholder="cozyfriend@domain.com" required />
+              <button type="submit" aria-label="Subscribe">&rarr;</button>
+            </form>
+            <span id="newsletter-status" class="newsletter-status"></span>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 The Saffron Brew. Made with warm childhood memories. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVE SLIDE CART DRAWER -->
+    <div id="cart-drawer-overlay" class="cart-drawer-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>Your Shopping Basket 🧺</h3>
+        <button id="cart-close-btn" class="close-btn" aria-label="Close Cart">&times;</button>
+      </div>
+
+      <!-- Scrollable Cart Contents -->
+      <div class="cart-drawer-body" id="cart-items-container">
+        <!-- Loaded dynamically in main.js -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-summary-line">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="cart-summary-line loyalty-discount-line" id="cart-discount-row" style="display: none;">
+          <span>Loyalty Reward (Free Coffee!)</span>
+          <span id="cart-discount">-$0.00</span>
+        </div>
+        <div class="cart-summary-line">
+          <span>Sales Tax (8%)</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="cart-summary-line total">
+          <span>Total Balance</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+
+        <!-- Checkout Form inside Drawer -->
+        <div class="checkout-options mt-4" id="checkout-options-form">
+          <label class="checkout-radio-label">
+            <input type="radio" name="checkout-type" value="dine-in" checked />
+            <span>Table Dine-In</span>
+          </label>
+          <label class="checkout-radio-label">
+            <input type="radio" name="checkout-type" value="takeaway" />
+            <span>Self Takeaway</span>
+          </label>
+          
+          <input type="number" id="checkout-table-num" class="checkout-input" placeholder="Table Number (1 - 15)" min="1" max="15" required />
+          <input type="time" id="checkout-time-val" class="checkout-input" style="display: none;" required />
+        </div>
+
+        <button id="checkout-submit-btn" class="btn btn-primary btn-large w-full mt-4 glow-hover" disabled>
+          Simulate Checkout Order
+        </button>
+      </div>
+    </div>
+
+    <!-- GENERAL DIALOG/LIGHTBOX OVERLAYS -->
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+      <span id="lightbox-close" class="lightbox-close">&times;</span>
+      <img id="lightbox-img" class="lightbox-content" src="" alt="Lightbox View" />
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Checkout Success Overlay Receipt -->
+    <div id="checkout-success-modal" class="checkout-success-modal flex-center">
+      <div class="receipt-box reveal-up">
+        <div class="receipt-checkmark-wrapper">
+          <div class="receipt-checkmark"></div>
+        </div>
+        
+        <h3 class="receipt-title">Order Placed Successfully!</h3>
+        <p class="receipt-subtitle">Your barista has started roasting your coffee beans. Here is your receipt:</p>
+        
+        <!-- Receipt Sheet -->
+        <div class="receipt-paper">
+          <div class="receipt-header">
+            <h4>THE SAFFRON BREW</h4>
+            <p>42 Saffron Lane, Cherry Blossom Ward, Tokyo</p>
+            <p id="receipt-date">Date: 2026-06-19</p>
+          </div>
+          
+          <div class="receipt-line-divider"></div>
+          
+          <div class="receipt-items-list" id="receipt-items-list">
+            <!-- Dynamically populated in main.js -->
+          </div>
+          
+          <div class="receipt-line-divider"></div>
+          
+          <div class="receipt-summary">
+            <div class="receipt-row"><span>Subtotal:</span><span id="receipt-subtotal">$0.00</span></div>
+            <div class="receipt-row font-bold"><span>Total Paid:</span><span id="receipt-total">$0.00</span></div>
+          </div>
+          
+          <div class="receipt-line-divider"></div>
+          
+          <div class="receipt-footer-details text-center">
+            <p id="receipt-service-type">Service: Table Service #5</p>
+            <p class="mt-2 text-xs">Scan code at our vinyl bar to collect perks:</p>
+            <!-- QR code generated in SVG -->
+            <svg class="qr-code-svg" viewBox="0 0 100 100">
+              <rect x="10" y="10" width="80" height="80" fill="none" stroke="#2F1F17" stroke-width="4"/>
+              <rect x="20" y="20" width="20" height="20" fill="#2F1F17"/>
+              <rect x="60" y="20" width="20" height="20" fill="#2F1F17"/>
+              <rect x="20" y="60" width="20" height="20" fill="#2F1F17"/>
+              <rect x="30" y="30" width="40" height="40" fill="none" stroke="#E78A3C" stroke-width="3"/>
+              <rect x="45" y="45" width="10" height="10" fill="#2F1F17"/>
+            </svg>
+            <span class="barcode-graphic">||||| | | |||| || |||| ||| |||</span>
+          </div>
+        </div>
+
+        <button id="close-success-modal-btn" class="btn btn-primary mt-4 w-full">Back to Cafe</button>
+      </div>
+    </div>
+
+    <!-- Booking Success Modal -->
+    <div id="booking-success-modal" class="booking-success-modal flex-center">
+      <div class="booking-success-card">
+        <div class="success-icon-animated">✓</div>
+        <h3>Table Booked!</h3>
+        <p>A table is waiting for your nostalgic storytelling. We have sent a confirmation email containing a map pin.</p>
+        <div class="booking-card-receipt" id="booking-card-receipt">
+          <!-- Dynamically populated in main.js -->
+        </div>
+        <button id="close-booking-success-btn" class="btn btn-primary w-full mt-4">Lovely, Thank You!</button>
+      </div>
+    </div>
+
+    <!-- Item Customization Options Modal -->
+    <div id="customize-modal" class="customize-modal flex-center">
+      <div class="customize-card reveal-up">
+        <div class="customize-header-wrapper">
+          <img id="customize-img" src="" alt="Customizing Item" />
+          <div class="customize-header-text">
+            <h3 id="customize-title">Drink Customization</h3>
+            <p id="customize-desc">Select milk, size, and extras.</p>
+          </div>
+        </div>
+        
+        <form id="customize-form" novalidate>
+          <div id="customize-options-container" class="customize-options-container">
+            <!-- Populated dynamically via JS -->
+          </div>
+          
+          <div class="customize-footer mt-4">
+            <div class="customize-price-line">
+              <span>Single Price:</span>
+              <span id="customize-unit-price">$0.00</span>
+            </div>
+            <div class="customize-price-line total mt-1">
+              <span>Item Total:</span>
+              <span id="customize-total-price">$0.00</span>
+            </div>
+            <button type="submit" class="btn btn-primary w-full mt-3 glow-hover" id="customize-add-btn">
+              Add to Basket 🧺
+            </button>
+          </div>
+        </form>
+        <button id="customize-close-btn" class="close-btn modal-close-x" aria-label="Close Modal">&times;</button>
+      </div>
+    </div>
+
+    <!-- Scripts Module -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
